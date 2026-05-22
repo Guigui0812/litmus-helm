@@ -60,6 +60,24 @@ We separated service configuration from `portal.server.service` to `portal.serve
 | allowedOrigins | string | `".*"` |  |
 | customLabels | object | `{}` | Additional labels |
 | customPodAnnotations | object | `{}` | Additional annotations |
+| dexServer.autoscaling.enabled | bool | `false` | Enable autoscaling for Dex |
+| dexServer.callbackURL | string | `""` | Redirect URL after authentication |
+| dexServer.connectors | list | `[]` | List of Dex connectors (OIDC, LDAP, etc.) |
+| dexServer.containerPort | int | `5556` | Dex container port |
+| dexServer.customLabels | object | `{}` | Additional labels for Dex |
+| dexServer.enabled | bool | `false` | Enable Dex Server component |
+| dexServer.image.pullPolicy | string | `"IfNotPresent"` | Dex image pull policy |
+| dexServer.image.repository | string | `"litmuschaos/litmusportal-dex-server"` | Dex image repository |
+| dexServer.image.tag | string | `"ci"` | Dex image tag |
+| dexServer.issuer | string | `""` | External URL of the Dex server |
+| dexServer.replicas | int | `1` | Number of Dex replicas |
+| dexServer.secret | string | `""` | Shared secret with Auth-Server |
+| dexServer.service.annotations | object | `{}` | Annotations for Dex service |
+| dexServer.service.nodePort | int | `32000` | NodePort for Dex (if type is NodePort) |
+| dexServer.service.port | int | `5556` | Dex service port |
+| dexServer.service.targetPort | int | `5556` | Dex service target port |
+| dexServer.service.type | string | `"NodePort"` | Service type for Dex |
+| dexServer.updateStrategy | object | `{}` | Dex deployment update strategy |
 | existingSecret | string | `""` | Use existing secret (e.g., External Secrets) |
 | image.imagePullSecrets | list | `[]` |  |
 | image.imageRegistryName | string | `"litmuschaos.docker.scarf.sh/litmuschaos"` |  |
@@ -91,6 +109,8 @@ We separated service configuration from `portal.server.service` to `portal.serve
 | mongodb | object | `{"architecture":"replicaset","auth":{"enabled":true,"existingSecret":"","rootPassword":"1234","rootUser":"root"},"enabled":true,"image":{"registry":"docker.io","repository":"bitnamilegacy/mongodb","tag":"8.0.13-debian-12-r0"},"livenessProbe":{"timeoutSeconds":20},"metrics":{"enabled":false,"prometheusRule":{"enabled":false}},"persistence":{"enabled":true},"readinessProbe":{"timeoutSeconds":20},"replicaCount":3,"volumePermissions":{"enabled":true,"image":{"registry":"docker.io","repository":"bitnamilegacy/os-shell","tag":"12-debian-12-r51"}}}` | Configure the Bitnami MongoDB subchart see values at https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml |
 | mongodb.auth.existingSecret | string | `""` | existingSecret Existing secret with MongoDB(&reg;) credentials (keys: `mongodb-passwords`, `mongodb-root-password`, `mongodb-metrics-password`, ` mongodb-replica-set-key`) |
 | nameOverride | string | `""` |  |
+| openshift.dexServer.customLabels | object | `{}` | Additional labels for Dex on OpenShift |
+| openshift.dexServer.route.annotations | object | `{}` | Annotations for Dex route on OpenShift |
 | openshift.route.annotations | object | `{}` |  |
 | openshift.route.customLabels | object | `{}` |  |
 | openshift.route.enabled | bool | `false` |  |
