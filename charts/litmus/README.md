@@ -60,6 +60,7 @@ We separated service configuration from `portal.server.service` to `portal.serve
 | allowedOrigins | string | `".*"` |  |
 | customLabels | object | `{}` | Additional labels |
 | customPodAnnotations | object | `{}` | Additional annotations |
+| dexServer.affinity | object | `{}` | Affinity for Dex |
 | dexServer.autoscaling.enabled | bool | `false` | Enable autoscaling for Dex |
 | dexServer.callbackURL | string | `""` | Redirect URL after authentication |
 | dexServer.connectors | list | `[]` | List of Dex connectors (OIDC, LDAP, etc.) |
@@ -70,13 +71,17 @@ We separated service configuration from `portal.server.service` to `portal.serve
 | dexServer.image.repository | string | `"litmuschaos/litmusportal-dex-server"` | Dex image repository |
 | dexServer.image.tag | string | `"ci"` | Dex image tag |
 | dexServer.issuer | string | `""` | External URL of the Dex server |
+| dexServer.nodeSelector | object | `{}` | Node selector for Dex |
 | dexServer.replicas | int | `1` | Number of Dex replicas |
+| dexServer.resources | object | `{}` | Resources for Dex |
 | dexServer.secret | string | `""` | Shared secret with Auth-Server |
+| dexServer.securityContext | object | `{}` | Security context for Dex |
 | dexServer.service.annotations | object | `{}` | Annotations for Dex service |
 | dexServer.service.nodePort | int | `32000` | NodePort for Dex (if type is NodePort) |
 | dexServer.service.port | int | `5556` | Dex service port |
 | dexServer.service.targetPort | int | `5556` | Dex service target port |
 | dexServer.service.type | string | `"NodePort"` | Service type for Dex |
+| dexServer.tolerations | list | `[]` | Tolerations for Dex |
 | dexServer.updateStrategy | object | `{}` | Dex deployment update strategy |
 | existingSecret | string | `""` | Use existing secret (e.g., External Secrets) |
 | image.imagePullSecrets | list | `[]` |  |

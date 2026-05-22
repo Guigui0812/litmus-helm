@@ -369,8 +369,9 @@ openshift:
     annotations: {}
     host: ""
   dexServer:
-    customLabels: {}
     route:
+      enabled: false
+      customLabels: {}
       annotations: {}
 
 dexServer:
@@ -395,6 +396,12 @@ dexServer:
     enabled: false
   updateStrategy: {}
   customLabels: {}
+
+  resources: {}
+  securityContext: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
 
   service:
     type: NodePort
